@@ -5,23 +5,7 @@
 
 function validar()
 {
-  var usuario = document.getElementById("inputUsuario").value;
-  var password = document.getElementById("inputPassword").value;	
-
-  if(usuario.trim() === "")
-  {
-    alert("Usuario incorrecto o no se ingreso");
-  }
-  else{
-        if(password.trim()=== "")
-  {
-    alert("Contraseña incorrecta o no se ingreso");
-  }
-  else
-  {
-  
-    window.location.href="home.html";
-  }
+  window.location.href="home.html";
 }
 
 
