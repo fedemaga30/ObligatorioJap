@@ -23,7 +23,7 @@ function validar()
     window.location.href="home.html";
   }
 }
-}
+
 
 function onSignIn(googleUser) {
   // Useful data for your client-side scripts:
