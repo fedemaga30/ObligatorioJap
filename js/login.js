@@ -20,7 +20,7 @@ function validar()
   else
   {
   
-    window.location.href="home.html";
+    window.location.href="https://fedemaga30.github.io/obligatorio/home.html";
   }
 }
 }
