@@ -1,6 +1,6 @@
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_SOLD_COUNT = "CantVendidos.";
+const ORDER_ASC_BY_COST = "Precio ASC";
+const ORDER_DESC_BY_COST = "Precio DESC";
+const ORDER_BY_PROD_COST = "Precio.";
 var currentProductArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
@@ -9,23 +9,23 @@ var categoriesArray = [];
 
 function sortProduct(criteria, array){
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
+    if (criteria === ORDER_ASC_BY_COST)
     {
         result = array.sort(function(a, b) {
-            if ( a.name < b.name ){ return -1; }
-            if ( a.name > b.name ){ return 1; }
+            if ( a.cost < b.cost ){ return -1; }
+            if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_NAME){
+    }else if (criteria === ORDER_DESC_BY_COST){
         result = array.sort(function(a, b) {
-            if ( a.name > b.name ){ return -1; }
-            if ( a.name < b.name ){ return 1; }
+            if ( a.cost > b.cost ){ return -1; }
+            if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_SOLD_COUNT){
+    }else if (criteria === ORDER_BY_PROD_COST){
         result = array.sort(function(a, b) {
-            let aCount = parseInt(a.productSoldCount);
-            let bCount = parseInt(b.productSoldCount);
+            let aCount = parseInt(a.productCost);
+            let bCount = parseInt(b.productCost);
 
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
@@ -42,8 +42,8 @@ function showProductList(array){
     for(let i = 0; i < currentProductArray.length; i++){
         let category = currentProductArray[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.soldCount) >= minCount)) &&
-        ((maxCount == undefined) || (maxCount != undefined && parseInt(category.soldCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+        ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
@@ -84,20 +84,20 @@ function sortAndShowProduct(sortCriteria, productArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            sortAndShowProduct(ORDER_ASC_BY_NAME, resultObj.data);
+            sortAndShowProduct(ORDER_ASC_BY_COST, resultObj.data);
         }
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowProduct(ORDER_ASC_BY_NAME);
+        sortAndShowProduct(ORDER_ASC_BY_COST);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowProduct(ORDER_DESC_BY_NAME);
+        sortAndShowProduct(ORDER_DESC_BY_COST);
     });
 
-    document.getElementById("sortBySoldCount").addEventListener("click", function(){
-        sortAndShowProduct(ORDER_BY_PROD_SOLD_COUNT);
+    document.getElementById("sortByCost").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_BY_PROD_COST);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
