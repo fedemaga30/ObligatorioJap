@@ -1,6 +1,6 @@
 const ORDER_ASC_BY_COST = "Precio ASC";
 const ORDER_DESC_BY_COST = "Precio DESC";
-const ORDER_BY_PROD_COST = "Precio.";
+const ORDER_BY_SOLD_COUNT = "Mas Vendidos";
 var currentProductArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
@@ -22,10 +22,10 @@ function sortProduct(criteria, array){
             if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COST){
+    }else if (criteria === ORDER_BY_SOLD_COUNT){
         result = array.sort(function(a, b) {
-            let aCount = parseInt(a.productCost);
-            let bCount = parseInt(b.productCost);
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
 
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
@@ -96,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         sortAndShowProduct(ORDER_DESC_BY_COST);
     });
 
-    document.getElementById("sortByCost").addEventListener("click", function(){
-        sortAndShowProduct(ORDER_BY_PROD_COST);
+    document.getElementById("sortBySoldCount").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_BY_SOLD_COUNT);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
