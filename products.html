@@ -22,6 +22,23 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <li class="nav-item dropdown d-md-inline-block">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuario
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <span class="dropdown-item" id="user" ></span></p>
+            <div class="dropdown-divider"></div>
+            <button class="button" onclick="localStorage.clear(); alert('Usuario desconectado'); location.href='index.html';" style="vertical-align:middle"><span>Desconectar</span></button>
+          </div>
+        </li>
+        <script>
+            var usuario = localStorage.getItem("usuario"); //getItem Obtiene el dato de la posición "usuario"
+            var sesion = sessionStorage.getItem("usuario");
+            document.getElementById('user').innerHTML=usuario;
+            document.getElementById('sesion').innerHTML=sesion;
+            //Nótese que si cerramos el navegador y volvemos a abrir, el dato sigue almacenado
+        </script>
       </div>
     </nav>
 
