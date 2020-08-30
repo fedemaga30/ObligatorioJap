@@ -77,7 +77,6 @@ function sortAndShowProduct(sortCriteria, productArray){
 
     currentProductArray = sortProduct(currentSortCriteria, currentProductArray);
 
-    //Muestro las categorías ordenadas
     showProductList();
 }
 

@@ -21,10 +21,8 @@ function validar()
   {
     localStorage.setItem("usuario", usuario.trim()); //setItem almacena el dato en la posición "usuario"
             localStorage.setItem("password", password.trim()); // Almaceno la contraseña
-            sessionStorage.setItem("usuario", usuario.trim());
             
-            
-           
+                  
     window.location.href="home.html";
   }
 }
