@@ -207,3 +207,7 @@ body {
 .dropdown-menu {
   margin-top: 0;
 }
+
+.costStyle{
+  font-weight: bolder;
+}
