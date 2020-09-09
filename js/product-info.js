@@ -1,5 +1,6 @@
 var product = {};
 
+//funcion para las imagenes
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
@@ -16,6 +17,26 @@ function showImagesGallery(array){
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    }
+}
+
+//Funcion para los comentarios
+function showComments(array) {
+    let htmlContentToAppend = "";
+    for (let i = 0; i < array.length; i++) {
+        let comment = array[i];
+        let starRatingHTML = "";
+        for (let i = 1; i <= comment.score; i++) {
+            starRatingHTML += "<span class='fa fa-star checked'></span>"
+        }
+        for (let i = comment.score + 1; i <= 5; i++) {
+            starRatingHTML += "<span class='fa fa-star'></span>"
+        }
+        htmlContentToAppend += `<div class="mt-2"><strong>Calificación:</strong> ${starRatingHTML}</div>
+        <p class="mt-1 mb-2">${comment.description}</p>
+        <div><h6 class="font-weight-bold">${comment.user}</h6>
+        <p>Publicado: ${comment.dateTime}</p></div>`
+        document.getElementById("comentrarios").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -42,10 +63,46 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCurrencyHTML.innerHTML = product.currency;
             productCostHTML.innerHTML = product.cost;
             productCategoryHTML.innerHTML = product.category;
+            
            
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
-        }
+
+            //Obtengo los Productos Relacionados
+            getJSONData(PRODUCTS_URL).then(function(resultObj){
+                if (resultObj.status === "ok"){ 
+                    let products = resultObj.data;
+        
+                    let html = "";
+                        product.relatedProducts.forEach(function(productIndex) {
+                        let product = products[productIndex];
+                        html += `
+                        <div class="card" style= "width: 200px; , height: 30px;">
+                            <img src="${product.imgSrc}" class="card-img-top">
+                            <div class= "card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <a href="category-info.html" class="btn btn-link">Ver</a>
+                            </div>
+                        </div>
+                        `
+                        //Muestro los Productos Relacionados
+                        document.getElementById("productosRelacionados").innerHTML = html;
+                        });
+                    }
+                });
+            }
+        });
+
     });
-});
+
+    //Obtengo los Comentarios
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+            comments = resultObj.data;
+            //Muestro los Comentarios
+            showComments(comments);
+        }
+    })
+  
