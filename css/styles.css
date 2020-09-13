@@ -211,3 +211,28 @@ body {
 .costStyle{
   font-weight: bolder;
 }
+
+
+.comentario{
+                
+margin-left: 120px;
+padding-right: 200px;
+}
+      
+input[type="radio"] {
+display: none;}
+
+.estrellas {
+font-size: 30px;
+max-width:-200px;
+direction: rtl;
+unicode-bidi: bidi-override; }
+            
+label:hover,
+label:hover~label {
+color: orange;}
+
+
+input[type="radio"]:checked~label {
+color: orange; }
+   
