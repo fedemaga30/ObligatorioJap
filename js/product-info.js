@@ -1,6 +1,6 @@
 var product = {};
 
-//funcion para las imagenes
+//funcion para las imagenes carusel
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
@@ -8,14 +8,20 @@ function showImagesGallery(array){
     for(let i = 0; i < array.length; i++){
         let imageSrc = array[i];
 
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
+        if(i==0){
+            htmlContentToAppend +=` 
+            <div class="carousel-item active">
+            <img src="` + imageSrc + `"class="d-block w-100" alt="...">
+            </div>`
+        }
 
+        else{
+            htmlContentToAppend +=` 
+            <div class="carousel-item">
+            <img src="` + imageSrc + `"class="d-block w-100" alt="...">
+            </div>`
+        }
+        
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
