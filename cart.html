@@ -4,16 +4,17 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <link rel="shortcut icon" href="img/Icon.png" type="image/x-icon">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,54 +42,130 @@
       </script>
     </div>
   </nav>
-  <main role="main" class="pb-5">
-    <div class="text-center p-4" role="banner"
-      style="background-image: url(./img/header.png); background-size: contain; background-repeat: no-repeat; background-position: 100% ;">
-      <h2>Mi carrito</h2>
-      <p class="lead">El carrito contiene los siguientes artículos</p>
+
+  <div class="text-center p-4">
+    <h2>Mi carrito</h2>
+      <p class="lead">Su carrito contiene los siguientes artículos</p>
+  </div>
+
+  <div id="cart-info-container" class="container mt-5">
+    <div class="table-responsive">
+      <table class="table" style="table-layout: fixed;">
+        <thead class="thead-light" style="text-align: center;">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="font-weight-bold">
+              <strong> Artículo </strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+              <strong>Precio</strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+              <strong>Cantidad</strong>
+            </th>
+            <th scope="col" class="font-weight-bold">
+              <strong>Subtotal</strong>
+            </th>
+          </tr>
+        </thead>
+         <tbody  id="miCarrito" style="text-align: center;">
+        </tbody>
+        <tfoot></tfoot>
+      </table>
     </div>
-    <hr>
-    <div id="cart-info-container" class="container mt-5">
-      <div class="table-responsive">
-        <table class="table"  id="tableProducts" style="table-layout: fixed;">
 
-          <thead class="thead-light" style="text-align:left;">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col" class="font-weight-bold">
-                <strong> Artículo </strong>
-              </th>
-              <th scope="col" class="font-weight-bold">
-                <strong>Precio</strong>
-              </th>
-              <th scope="col" class="font-weight-bold">
-                <strong>Cantidad</strong>
-              </th>
-              <th scope="col" class="font-weight-bold">
-                <strong>Moneda</strong>
-              </th>
-              <th scope="col" class="font-weight-bold">
-                <strong>Subtotal</strong>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="table-body" style="text-align: center;">
-          </tbody>
-          <tfoot></tfoot>
-        </table>
-      </div>
-
-
-    </div>
-          
- 
-  <div class="container p-5">
-
-
- <label id="preFinal"></label>
- <input type="button" class="btn btn-primary" id="aplicarCart" value="Actualizar">
+      <div class="row"> 
 
   </div>
+
+  <h5 class="mb-3">Tipo de envio</h5>
+
+  <form action="">
+  <div class="d-block my-3">
+
+    <div class="radio">
+      <label><input type="radio" name="tipo_envio" value="0.15" onclick="carrito()" checked>
+        Premium 2 a 5 días (15%)</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="tipo_envio" value="0.07" onclick="carrito()"> 
+        Express 5 a 8 días (7%)</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="tipo_envio" value="0.05" onclick="carrito()"> 
+        Standard 12 a 15 días (5%)</label>
+    </div>
+    
+    <div class="row">
+      <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver
+        condiciones</button>
+    </div>
+
+  </dl>
+<dt>
+  <hr class="mb-4">
+  <h5 class="mb-3">Dirección de envio</h5>
+  <label>Nombre</label>
+  <textarea class="form-control" rows="1" cols="1" style="width: 500px;"></textarea>
+
+  <label>Numero</label>
+  <textarea class="form-control" rows="1" cols="10" style="width: 500px;"></textarea>
+
+  <label>Esquina</label>
+  <textarea class="form-control" rows="1" style="width: 500px;"></textarea>
+</dt>
+
+<hr>
+
+<div class="col2">
+  <div>
+    <h4 class="mb-3">Costos</h4>
+    <ul class="list-group">
+
+      <ul class="list-group mb-3">
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="my-0">Subtotal ($)</h6>
+          <small class="text-muted">Unitario del producto por cantidad</small>
+        </div>
+        <span><span id="subTotal"></span></span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="my-0">Costo de Envio ($)</h6>
+          <small class="text-muted">Según el tipo de envio</small>
+        </div>
+        <span><span id="costoDeEnvio"></span></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>Total ($)</span>
+        <span style="font-size: 120%;color:unset;background-color: unset;"><span
+            id="total"> </span></span>
+      </li>
+    </ul>
+    
+  </div>
+  <br>
+</div>
+
+<dt>
+
+  
+  <hr class="mb-4">
+  
+  <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+
+  </form>
+</div>
+</div>
+</dt>
+
+
+
+</div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -97,20 +174,17 @@
       <div></div>
     </div>
   </div>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-right">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
+
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <div class="g-signin2" style="display: none;"></div>
+
+
+
 </body>
 
 </html>
