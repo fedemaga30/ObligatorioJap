@@ -37,7 +37,7 @@ function computeSubtotal(){
     let subtotal = 0
     for(let i = 0; i < misArticulos.length; i++){
         let UYUunitCost = misArticulos[i].unitCost;
-        if(misArticulos[i].currency === 'USD'){UYUunitCost = misArticulos[i].unitCost * 40}    // si la moneda es USD conviero a UYU
+        if(misArticulos[i].currency === 'UYU'){UYUunitCost = misArticulos[i].unitCost / 40}    // Convierto Pesos a Dolares
         subtotal += UYUunitCost*misArticulos[i].count;
     }
     return Math.round(subtotal)
