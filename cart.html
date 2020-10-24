@@ -42,7 +42,7 @@
       </script>
     </div>
   </nav>
-
+  <form class="needs-validation" novalidate>
   <div class="text-center p-4">
     <h2>Mi carrito</h2>
       <p class="lead">Su carrito contiene los siguientes artículos</p>
@@ -80,7 +80,7 @@
 
   <h5 class="mb-3">Tipo de envio</h5>
 
-  <form action="">
+  
   <div class="d-block my-3">
 
     <div class="radio">
@@ -95,72 +95,217 @@
       <label><input type="radio" name="tipo_envio" value="0.05" onclick="carrito()"> 
         Standard 12 a 15 días (5%)</label>
     </div>
-    
-    <div class="row">
-      <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver
-        condiciones</button>
-    </div>
 
   </dl>
 <dt>
-  <hr class="mb-4">
-  <h5 class="mb-3">Dirección de envio</h5>
-  <label>Nombre</label>
-  <textarea class="form-control" rows="1" cols="1" style="width: 500px;"></textarea>
-
-  <label>Numero</label>
-  <textarea class="form-control" rows="1" cols="10" style="width: 500px;"></textarea>
-
-  <label>Esquina</label>
-  <textarea class="form-control" rows="1" style="width: 500px;"></textarea>
-</dt>
+ 
 
 <hr>
 
-<div class="col2">
-  <div>
-    <h4 class="mb-3">Costos</h4>
-    <ul class="list-group">
-
-      <ul class="list-group mb-3">
-
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <h6 class="my-0">Subtotal (USD)</h6>
-          <small class="text-muted">Unitario del producto por cantidad</small>
-        </div>
-        <span><span id="subTotal"></span></span>
-      </li>
-
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <h6 class="my-0">Costo de Envio (USD)</h6>
-          <small class="text-muted">Según el tipo de envio</small>
-        </div>
-        <span><span id="costoDeEnvio"></span></span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>Total (USD)</span>
-        <span style="font-size: 120%;color:unset;background-color: unset;"><span
-            id="total"> </span></span>
-      </li>
-    </ul>
-  <p>*El Precio Total, Subtotal y El Envio Estan En Dolares</p>
+<dt>
+  <div class="col2">
+    <div>
+      <h4 class="mb-3">Costos</h4>
+      <ul class="list-group">
+  
+        <ul class="list-group mb-3">
+  
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="my-0">Subtotal (USD)</h6>
+            <small class="text-muted">Unitario del producto por cantidad</small>
+          </div>
+          <span><span id="subTotal"></span></span>
+        </li>
+  
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="my-0">Costo de Envio (USD)</h6>
+            <small class="text-muted">Según el tipo de envio</small>
+          </div>
+          <span><span id="costoDeEnvio"></span></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span>Total (USD)</span>
+          <span style="font-size: 120%;color:unset;background-color: unset;"><span
+              id="total"> </span></span>
+        </li>
+      </ul>
+    <p>*El Precio Total, Subtotal y El Envio Estan En Dolares</p>
+    </div>
+    <br>
   </div>
-  <br>
-</div>
+  
+  </dt>
 
 <dt>
 
-  
-  <hr class="mb-4">
-  
-  <button class="btn btn-primary btn-lg" type="submit">Comprar</button>
+<hr>
 
-  </form>
+<h5 class="mb-3">Tipo de pago</h5>
+
+<div class="mb-3" id="forma"></div><br>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Selecciona un Metodo de pago
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Formas de Pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+      
+      <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+      <li class="nav-item"> <a data-toggle="pill" href="#tarjeta" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta de Credito </a> </li>
+      <li class="nav-item"> <a data-toggle="pill" href="#banco" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Banco </a> </li>
+                              </ul>
+                          </div> 
+                        
+
+                          <div class="tab-content">
+                  
+                              <div id="tarjeta" class="tab-pane fade show active pt-3">
+                                  <form role="form">
+                                      <div class="form-group"> <label for="username">
+                                              <h6>Dueño de la Tarjeta</h6>
+                                          </label> <input type="text" name="username" id="tarjetanom" placeholder="Nombre y Apellido" required class="form-control "> </div>
+                                      <div class="form-group"> <label for="cardNumber">
+                                              <h6>Numero de Tarjeta</h6>
+                                          </label>
+                                          <div class="input-group"> <input type="text" id="tarjetanum" name="cardNumber" placeholder="Numero Valido" class="form-control " required>
+                                              <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-8">
+                                              <div class="form-group"> <label><span class="hidden-xs">
+                                                          <h6>Fecha de Vencimiento</h6>
+                                                      </span></label>
+                                                  <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required> <input id="año" type="number" placeholder="YY" name="" class="form-control" required> </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <div class="form-group mb-4"> <label data-toggle="tooltip" title="Los tres digitos de atras de tu tarjeta">
+                                                      <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                                  </label> <input id="cvv" type="text" required class="form-control"> </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-footer"> <button type="button" onclick="metodoPagoTarjeta()" class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar Metodo </button>
+                                  </form>
+                              </div>
+                          </div>
+
+                          
+                          <div id="banco" class="tab-pane fade pt-3">
+                              <div class="form-group "> <label for="Selecciona tu Banco">
+                                      <h6>Selecciona tu Banco</h6>
+                                  </label> <select class="form-control">
+                                      <option value="" id="banco" selected disabled>--Selecciona tu Banco--</option>
+                                      <option>Itau</option>
+                                      <option>Brou</option>
+                                      <option>Santander</option>
+                                      <option>Scotiabank</option>
+
+                                  </select> </div>
+                              <div class="form-group">
+                                  <p> <button type="button" class="btn btn-primary " onclick="metodoPagoBanco()"><i class="fas fa-mobile-alt mr-2"></i> Confirmar Metodo</button> </p>      
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</dt>
+
+<hr class="mb-4">
+<div class="container">
+<div class="needs-validation">
+<h5 class="mb-3">Dirección de envio</h5>
+
+
+<div class="form-row">
+  <div class="col-md-6 mb-3">
+    <label for="validationCustom03">Ciudad</label>
+    <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+    <div class="invalid-feedback">
+      Porfavor ingrese una Ciudad valida
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <label for="validationCustom04">Departamento</label>
+    <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+    <div class="invalid-feedback">
+      Porfavor ingrese un Departamento valido
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <label for="validationCustom05">Codigo Postal</label>
+    <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+    <div class="invalid-feedback">
+      Porfavor ingrese un codigo postal valido
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <label for="validationCustom05">Calle</label>
+    <input type="text" class="form-control" id="validationCustom06" placeholder="Calle" required>
+    <div class="invalid-feedback">
+      Porfavor ingrese una calle valida
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <label for="validationCustom05">Esquina</label>
+    <input type="text" class="form-control" id="validationCustom07" placeholder="Esquina" required>
+    <div class="invalid-feedback">
+      Porfavor Ingrese una esquina valida
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+    <label class="form-check-label" for="invalidCheck">
+      Agree to terms and conditions
+    </label>
+    <div class="invalid-feedback">
+      You must agree before submitting.
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary btn-lg" type="submit" >Comprar</button>
+</form>
+
+
+
+
 </div>
 </div>
 </dt>
+
+
+<footer class="text-muted bg-light">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Volver arriba</a>
+    </p>
+    <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+    <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+  </div>
+</footer>
 
 
 

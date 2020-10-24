@@ -20,6 +20,73 @@ function mostrarArticulos(articles){
     }
     htmlContentToAppend += `<tr><th scope="row"></th><td></td><td></td><td></td><td></td></tr>`
     document.getElementById("miCarrito").innerHTML = htmlContentToAppend;
+
+
+}
+
+
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+    
+    var forms = document.getElementsByClassName('needs-validation');
+    
+    var validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+    if (form.checkValidity() === false) {
+    event.preventDefault();
+    event.stopPropagation();
+    }
+    else{
+        alert("Compra Realizada");
+    }
+    form.classList.add('was-validated');
+    }, false);
+    });
+    }, false);
+    })();
+
+
+function metodoPagoTarjeta(){
+
+    var nombTarjeta = document.getElementById("tarjetanom");
+    var numTarjeta  = document.getElementById("tarjetanum");
+    var venTarjeta  = document.getElementById("año");
+    var ccvTarjeta  = document.getElementById("cvv");
+
+    if(nombTarjeta.value==="" && numTarjeta.value==="" && venTarjeta.value==="" && ccvTarjeta.value==="" ){
+       
+        alert("Error de ingreso");
+
+    }
+    
+    else{
+        
+        alert("Metodo Elegido Correctamente");
+        document.getElementById("forma").innerHTML = "Tarjeta de credito";
+              
+    }
+
+   
+}
+
+function metodoPagoBanco(){
+
+    var nombTarjeta = document.getElementById("banco")
+
+    if(banco.value==="" ){
+       
+        alert("Error de ingreso");
+
+    }
+    
+    else{
+        
+        document.getElementById("forma").innerHTML = "Banco";
+              
+    }
+
+   
 }
 
 function tipoEnvio(){
@@ -33,7 +100,7 @@ function tipoEnvio(){
     return costTipoDeEnvio
 }
 
-function computeSubtotal(){
+function finalSubtotal(){
     let subtotal = 0
     for(let i = 0; i < misArticulos.length; i++){
         let UYUunitCost = misArticulos[i].unitCost;
@@ -63,13 +130,13 @@ function carrito(atrib=false,art=false){
     }        
 
     // Subtotal
-    document.getElementById('subTotal').innerHTML = computeSubtotal();
+    document.getElementById('subTotal').innerHTML = finalSubtotal();
         
     // Envio
-    document.getElementById('costoDeEnvio').innerHTML = Math.round(computeSubtotal() * tipoEnvio());
+    document.getElementById('costoDeEnvio').innerHTML = Math.round(finalSubtotal() * tipoEnvio());
 
     // Total
-    document.getElementById('total').innerHTML = Math.round((computeSubtotal() * tipoEnvio())+computeSubtotal());
+    document.getElementById('total').innerHTML = Math.round((finalSubtotal() * tipoEnvio())+finalSubtotal());
         
 }
 
@@ -84,3 +151,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+
+
