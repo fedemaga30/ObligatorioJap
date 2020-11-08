@@ -38,6 +38,7 @@ function mostrarArticulos(articles){
     event.stopPropagation();
     }
     else{
+
         alert("Compra Realizada");
     }
     form.classList.add('was-validated');
@@ -81,7 +82,7 @@ function metodoPagoBanco(){
     }
     
     else{
-        
+        alert("Metodo Elegido Correctamente");
         document.getElementById("forma").innerHTML = "Banco";
               
     }

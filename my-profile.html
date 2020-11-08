@@ -1,105 +1,175 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <link rel="shortcut icon" href="img/Icon.png" type="image/x-icon">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">   
 </head>
 
 <body>
-  <!-- Inicio barra de navegación -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="barra">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Inicio barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="barra">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <span id="user"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="cart.html">Mi carrito</a>
+              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+              <div class="dropdown-divider"></div>
+              <button class="button" onclick="localStorage.clear(); alert('Usuario desconectado'); location.href='index.html';" style="vertical-align:middle"><span>Desconectar</span></button>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <script>
+          var usuario = localStorage.getItem("usuario"); //getItem Obtiene el dato de la posición "usuario"
+          document.getElementById('user').innerHTML=usuario;
+      </script>
+      </div>
+    </nav>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="home.html">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="categories.html">Categorías</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="products.html">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sell.html">Vender</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <span id="user"></span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="cart.html">Mi carrito</a>
-            <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
-            <div class="dropdown-divider"></div>
-            <button class="button" onclick="localStorage.clear(); alert('Usuario desconectado'); location.href='index.html';" style="vertical-align:middle"><span>Desconectar</span></button>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-      <script>
-        var usuario = localStorage.getItem("usuario"); //getItem Obtiene el dato de la posición "usuario"
-        document.getElementById('user').innerHTML=usuario;
-    </script>
-    </div>
-  </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+
+  <div class="text-center p-4">
+    <h2>Mi perfil</h2>
+    <p class="lead">Verás aquí todos los datos personales ingresados a tu cuenta</p>
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
+
+  <div class="container">
+      <div class="row justify-content-md-center mydata" id="boxUserInformation">
+        <div class="col-sm-auto mydata">
+          <p><strong>Nombre: </strong><span id="boxUserInformation_name"></span></p>
+          <p><strong>Apellidos: </strong><span id="boxUserInformation_lastName"></span></p>
+          <p><strong>Edad: </strong><span id="boxUserInformation_age"></span> años</p>
+          <p><strong>Celular: </strong><span id="boxUserInformation_cel"></span></p>
+          <p><strong>Email: </strong><span id="boxUserInformation_email"></span></p>
+          <button type="button" class="btn btn-outline-secondary" onclick="javascript:askForUserDatas()">Editar información</button>
+        </div>
+      </div>
+      <form class="personal_datas" action="" id="personal_datas">
+        <h4 class="text-center mt-4">Introduzca sus datos personales</h4>
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-sm-auto description">
+            <div class="mycol1">
+              <label for="no_card">Nombre</label>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="mycol2">
+              <input type="text" id="userDataName" class="form-control" placeholder="" maxlength="10" style="width: 111px;" required>
+              <div class="invalid-feedback" id="no_card_inv_feedback">Inserte su nombre</div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-sm-auto description">
+            <div class="mycol1">
+              <label for="no_card">Apellidos</label>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="mycol2">
+              <input type="text" id="userDataLastName" class="form-control" placeholder="" maxlength="19" style="width: 220px;" required>
+              <div class="invalid-feedback" id="no_card_inv_feedback">Inserte sus apellidos</div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-sm-auto description">
+            <div class="mycol1">
+             <label for="no_card">Edad</label>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="mycol2">
+              <input type="number" id="userDataAge" class="form-control" placeholder="" maxlength="2" style="width: 83px;" required>
+              <div class="invalid-feedback" id="no_card_inv_feedback">Inserte su edad</div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-sm-auto description">
+            <div class="mycol1">
+             <label for="no_card">Celular</label>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="mycol2">
+              <input type="number" id="userDataCel" class="form-control" placeholder="" maxlength="9" style="width: 220px;" required>
+              <div class="invalid-feedback" id="no_card_inv_feedback">Inserte su Celular</div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-md-center mt-3">
+          <div class="col-sm-auto description">
+            <div class="mycol1">
+              <label for="no_card">email</label>
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="mycol2">
+              <input type="Email" id="userDataEmail" class="form-control" placeholder="" maxlength="25" style="width: 220px;" required>
+              <div class="invalid-feedback" id="no_card_inv_feedback">Inserte su correo electrónico</div>
+              <button type="button" class="btn btn-outline-secondary" onclick="javascript:saveUserDatas()" style="margin-top: 20px;">Salvar Datos</button>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+  
+  
+
   <div class="alert fade alert-success" role="alert" id="alertResult">
     <span id="resultSpan"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
+  <footer>
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -113,6 +183,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
